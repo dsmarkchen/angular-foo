@@ -2,13 +2,19 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="foo.js"> </script>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+
+
+
 <body>
 
 <div ng-app="fooApp" ng-controller="fooCtrl">
 
-<br>
-{{myWelcome}}
-
+<br> {{myWelcome}}
+<br> {{myGuideToStartL1}}
+<br> {{myGuideToStartL2}}
 <br>
 <br>
 <br>
@@ -26,6 +32,14 @@
  <input ng-model="addModel">
  <input ng-model="addColor">
   <button ng-click="addCar()">Add</button>
+
+<ul>
+  <li ng-repeat="x in myData">
+    {{ x.Name + ', ' + x.Country }}
+  </li>
+</ul>
+
+
 </div>
 
 
