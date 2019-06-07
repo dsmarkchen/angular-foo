@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="foo.js"> </script>
+<body>
+
+<div ng-app="fooApp" ng-controller="fooCtrl">
+
+<br>
+{{myWelcome}}
+
+<br>
+<br>
+<br>
+
+<table>
+  <tr ng-repeat="x in cars">
+    <td>{{ x.model }}</td>
+    <td>{{ x.color }}</td>
+  </tr>
+</table>
+
+<ul>
+<li ng-repeat="x in cars">{{x}}  </li>
+</ul>
+ <input ng-model="addModel">
+ <input ng-model="addColor">
+  <button ng-click="addCar()">Add</button>
+</div>
+
+
+</body>
+</html>
+
