@@ -17,9 +17,16 @@
 <br> {{myGuideToStartL1}}
 <br> {{myGuideToStartL2}}
 <br>
+    <button ng-click="fetch()">Fetch</button> 
+<br>
+ <input ng-model="addFooName"> 
+ <input ng-model="addFooHeight">  
+ <button ng-click="addFoo()">Add</button> 
+<br>
 start listFoo
 <br>
 <table>
+
   <tr ng-repeat="x in ListFoo">
     <td>{{ x.id | number }}</td>
     <td>{{ x.name}}</td>
@@ -29,6 +36,11 @@ start listFoo
 
 <br>
 end listFoo
+ <input ng-model="addFooName"> 
+ <input ng-model="addFooHeight">  
+ <button ng-click="addFoo()">Add</button> 
+ <button ng-click="fetch()">Fetch</button> 
+
 
 <table>
   <tr>

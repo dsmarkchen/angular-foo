@@ -23,8 +23,35 @@ foo_app.config(['$sceDelegateProvider', function($sceDelegateProvider) {
     $scope.cars.push(car);  
   };
 
-  fetch();
-  getone(1);
+ 
+  $scope.addFoo = function () {
+        var data = {id: 0, name: $scope.addFooName, height: $scope.addFooHeight};
+
+        var urlpost = "http://localhost:53818/api/foo"
+
+        $http.post(urlpost, JSON.stringify(data))
+            .then(function (response) {
+                console.log( ">>>> " + response);
+
+            if (response.data) 
+
+                $scope.msg = "Post Data Submitted Successfully!";
+
+            }, function (response) {
+
+                $scope.msg = "Service not Exists";
+
+                $scope.statusval = response.status;
+
+                $scope.statustext = response.statusText;
+
+                $scope.headers = response.headers();
+            }); 
+            
+    } ; 
+  
+//  fetch();
+//  getone(1);
 
 //    console.log("begin");
     function getposts() {
@@ -46,7 +73,7 @@ foo_app.config(['$sceDelegateProvider', function($sceDelegateProvider) {
         */
     }
 
-    function fetch() {
+      $scope.fetch = function() {
         var url2 = "http://localhost:53818/api/foo"
         var trustedUrl2 = $sce.trustAsResourceUrl(url2);
  
@@ -58,7 +85,7 @@ foo_app.config(['$sceDelegateProvider', function($sceDelegateProvider) {
                 $scope.ListFoo = rsp.data;
             }, function (error) {
                 console.log("####   " + trustedUrl2);
-                console.log("####   " +error);
+                console.log("####   " + error);
             });
      }
 
