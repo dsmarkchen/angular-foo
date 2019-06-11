@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script data-require="angular-route@*" data-semver="1.2.20" src="https://code.angularjs.org/1.2.20/angular-route.js"></script>
 <script src="foo.js"> </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -16,13 +17,23 @@
 <br> {{myGuideToStartL1}}
 <br> {{myGuideToStartL2}}
 <br>
+start listFoo
 <br>
+<table>
+  <tr ng-repeat="x in ListFoo">
+    <td>{{ x.id | number }}</td>
+    <td>{{ x.name}}</td>
+    <td>{{ x.height| number }}</td>
+  </tr>
+</table>
+
 <br>
+end listFoo
 
 <table>
-  <tr ng-repeat="x in cars">
-    <td>{{ x.model }}</td>
-    <td>{{ x.color }}</td>
+  <tr>
+    <td>{{ Foo.sn }}</td>
+    <td>{{ Foo.factor }}</td>
   </tr>
 </table>
 
