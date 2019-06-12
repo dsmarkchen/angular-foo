@@ -66,6 +66,7 @@ namespace fooAPI.Controllers
                 foo.Name = foo_update.Name;
                 foo.Height = foo_update.Height;
                 _session.Save(foo);
+                transaction.Commit();
             }
         }
 
@@ -73,6 +74,13 @@ namespace fooAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            using (var transaction = _session.BeginTransaction())
+            {
+                var foo = _session.Get<Foo>(id);                
+                _session.Delete(foo);
+
+                transaction.Commit();
+            }
         }
     }
 }
