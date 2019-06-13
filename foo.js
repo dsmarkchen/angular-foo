@@ -12,10 +12,6 @@ foo_app.controller('fooCtrl', function($scope, $http, $sce, $timeout) {
   $scope.loading = false;
 
   $scope.myWelcome = "Welcome to foo";
-  $scope.myGuideToStartL1="$mpm install -g local-web-server";
-  $scope.myGuideToStartL2="$ws";
-
-
 
   $scope.cars = [
   {model : "Ford Mustang", color : "red"},
