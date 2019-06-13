@@ -1,6 +1,7 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
+using foo;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -21,8 +22,9 @@ namespace fooCmdLine
         {
             ISession session = xSessionManager.GetCurrentSession();
             xSessionManager.ExportSchema();
-            var run11 = new Foo { Id = 0, Name = "Foo", Height = 1.7f };
-            var run12 = new Foo { Id = 0, Name = "Bar", Height = 1.5f };
+            DateTime dt = DateTime.Now;
+           var run11 = new Foo { Id = 0, Name = "Foo", Height = 1.7f , DateTime = dt};
+           var run12 = new Foo { Id = 0, Name = "Bar", Height = 1.5f, DateTime = dt.AddDays(-1) };
 
             using (var transaction = session.BeginTransaction())
             {
@@ -76,7 +78,7 @@ namespace fooCmdLine
                          m.FluentMappings.Conventions.AddAssembly(Assembly.GetExecutingAssembly());
                          m.HbmMappings.AddFromAssembly(Assembly.GetExecutingAssembly());
 
-                         var assembly = Assembly.Load("fooCmdLine");
+                         var assembly = Assembly.Load("foo");
                          m.FluentMappings.Conventions.AddAssembly(assembly);
                          m.FluentMappings.AddFromAssembly(assembly);
                          m.HbmMappings.AddFromAssembly(assembly);

@@ -1,21 +1,22 @@
 ﻿using FluentNHibernate.Mapping;
-using fooCmdLine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace fooCmdLine
-{   
-    public class FooMap : ClassMap<Foo>
+namespace foo
+{
+    public class BookMap : ClassMap<Book>
     {
-        public FooMap()
+        public BookMap()
         {
             Id(x => x.Id);
 
             Map(x => x.Name);
-            Map(x => x.Height);
+            Map(x => x.Author);
 
+            References(x => x.Foo);
         }
     }
 }

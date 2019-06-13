@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
-using fooAPI.Models;
+using foo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +61,7 @@ namespace fooAPI
                     m.FluentMappings.Conventions.AddAssembly(Assembly.GetExecutingAssembly());
                     m.HbmMappings.AddFromAssembly(Assembly.GetExecutingAssembly());
 
-                    var assembly = Assembly.Load("fooAPI");
+                    var assembly = Assembly.Load("foo");
                     m.FluentMappings.Conventions.AddAssembly(assembly);
                     m.FluentMappings.AddFromAssembly(assembly);
                     m.HbmMappings.AddFromAssembly(assembly);

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentNHibernate.Cfg;
-using fooAPI.Models;
+using foo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate.Tool.hbm2ddl;
@@ -65,6 +65,7 @@ namespace fooAPI.Controllers
                 var foo = _session.Get<Foo>(id);
                 foo.Name = foo_update.Name;
                 foo.Height = foo_update.Height;
+                foo.DateTime = foo_update.DateTime;
                 _session.Save(foo);
                 transaction.Commit();
             }

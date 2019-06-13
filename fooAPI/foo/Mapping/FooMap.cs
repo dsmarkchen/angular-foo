@@ -1,11 +1,11 @@
 ﻿using FluentNHibernate.Mapping;
-using fooAPI.Models;
+using foo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace fooAPI.Mapping
+namespace foo
 {   
     public class FooMap : ClassMap<Foo>
     {
@@ -15,7 +15,11 @@ namespace fooAPI.Mapping
 
             Map(x => x.Name);
             Map(x => x.Height);
+            Map(x => x.DateTime);
 
+            HasMany(x => x.Books)
+               .Inverse()
+               .Cascade.AllDeleteOrphan();
         }
     }
 }
