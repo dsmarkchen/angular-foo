@@ -60,6 +60,7 @@
 <body>
 
 <div class="sidenav">
+
   <a href="#about">About</a>
   <a href="foo.html">Foo</a>
   <a href="#clients">Clients</a>
@@ -70,6 +71,11 @@
 <p> abc 
 
 <div class="container-fluid" ng-app="fooApp" ng-controller="fooCtrl" >
+
+    <p ng-show="loading">...LOADING...</p>
+
+    <!-- Showing the status -->
+    <p ng-hide="loading">{{status}}</p>
 
     <div class='col-sm-12'> 
         <br> {{myWelcome}}
@@ -84,7 +90,7 @@
 <br> <br>
  <input ng-model="addFooName"> 
  <input ng-model="addFooHeight">  
- <button ng-click="addFoo()" class="btn btn-primary">Add</button> 
+ <button ng-click="add()" class="btn btn-primary">Add</button> 
 <br>
     </div>
     <div class='col-sm-12'> 
@@ -102,11 +108,20 @@ Foo
 <br>
     <div class='col-sm-12'> 
 <table class="table table-striped table-bordered">
-
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>height</th>
+      <th>dateTime</th>
+      <th>select</th>
+    </tr>
+  </thead>
   <tr ng-repeat="x in ListFoo">
     <td>{{ x.id | number }}</td>
     <td>{{ x.name}}</td>
     <td>{{ x.height| number }}</td>
+    <td>{{ x.dateTime | date:'dd-MMM-yyyy HH:mm:ss' }}</td>
     
     <td>
         <button ng-click="select(x)"> Select</button>
