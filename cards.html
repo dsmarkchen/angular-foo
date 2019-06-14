@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+  <script src="cards.js"> </script>
+</head>
+<body>
+<!-- Navigation -->
+
+<div class="container">
+  <h2>Cards</h2>
+  
+<div class="container" ng-app="cardsApp" ng-controller="cardsCtrl">
+  <div id="accordion" class="card" ng-repeat="x in cards">
+         <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#{{x.ref}}">
+                {{x.title}}
+            </a>
+         </div>
+         <div id="{{x.ref}}" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+              {{x.content}}
+            </div>
+         </div>
+
+  </div>
+</div> 
+</body>
+</html>
+
