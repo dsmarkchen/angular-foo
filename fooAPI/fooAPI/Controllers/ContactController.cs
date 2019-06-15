@@ -23,7 +23,7 @@ namespace fooAPI.Controllers
         [HttpGet]
         public IEnumerable<Contact> Get()
         {
-            return new Contact[] { };
+            return _session.CreateCriteria(typeof(Contact)).List<Contact>();
         }
 
         // GET: api/Contact/5

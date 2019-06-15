@@ -61,9 +61,9 @@ textarea.ng-invalid.ng-dirty{
 </head>
 
 
-<div class="container" ng-app="ContactForm">
+<div class="container" ng-app="contactUsApp">
 	<h1>Contact us</h1>
-	<form name="cf" ng-controller="cfController as cfCtrl" ng-submit="submitForm(cf.$valid)" novalidate>
+	<form name="cf" ng-controller="contactUsCtrl" ng-submit="submitForm(cf.$valid)" novalidate>
 		<div class="form-group">
 			<label for="name">Name</label>
 			<input id="name" type="text" name="name" ng-model="name" required>
