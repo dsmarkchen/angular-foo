@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\BookMap.cs" />
+    <Compile Include="Mapping\ContactMap.cs" />
     <Compile Include="Mapping\FooMap.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Foo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
