@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tetris</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="tetris.js"> </script>
+<style>
+
+body, input, textarea {
+	font-family: Open Sans, Helvetica, sans-serif;
+	font-size: 16px;
+}
+input {
+    width: 10%;
+    margin: 0 auto;
+    padding: 0;
+    border:1px solid #eee;
+}
+input[disabled] {
+	opacity: 0.5;
+    background-color: #72A4D2;
+}
+td {
+    border:1px solid #eee;
+    width: 12.5%;
+}
+tr {
+    border:1px solid #eee;
+    width: 100%;
+}
+table {
+    width: 100%;
+}
+td.red {
+    background-color: red;
+    color: red;
+}
+td.blue {
+    opacity: 0.5;
+    background-color: #72a4d2;
+    color: #72a4d2;
+}
+td.orange {
+   opacity: 0.5;
+   background-color: #ff9933;
+   color: #ff9933;
+}  
+td.default {
+    background-color: #eee;
+    color: #eee;
+}
+
+</style>
+</head>
+<body ng-app="tetrisApp">
+
+<div id="mydiv" class="container" ng-controller="tetrisCtrl">
+	<h1>Tetris</h1>
+    <table>
+        <tr ng-repeat="rows in data">
+         <!--   <td ng-repeat-start="item in rows">{{item.id}}</td>
+            <td ng-repeat-end>{{item.value}}</td>  -->
+           <td ng-repeat="item in rows" class={{item.color}}>{{item.row + " " + item.col}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+
