@@ -1,8 +1,9 @@
 var app = angular.module('tetrisApp',[]);
 
-app.controller("tetrisCtrl",function($scope, $timeout){
+app.controller("tetrisCtrl",function($scope, $timeout, $filter){
 
     $scope.data = [];
+    $scope.ending = [];
     $scope.cols = 8;
 
     $scope.startRow = 'A';
@@ -19,12 +20,32 @@ app.controller("tetrisCtrl",function($scope, $timeout){
         $scope.data.push(theRow);
 
       }
+      for(var col = 0; col < $scope.cols; col++) {
+            var elem = {"row": $scope.lastRow, "col": String.fromCharCode(48 + col) };
+            $scope.ending.push(elem);
+      }
+     
+    };
+
+    $scope.updateEnding = function() {
+        //console.log(">>>> " + row1 + " " + col1)
+       for(var col = 0; col < $scope.cols; col++) {
+            for(var row = 0; row < $scope.rows; row++) {
+
+             var theRow =  $scope.data[row];
+             if(theRow[col].color != "default") {
+                 $scope.ending[col].row = theRow[col].row;
+                 break;    
+             }
+            }
+        }
+        
     }
 
     $scope.updateOneElement = function (elem1) {     
         var row1 = elem1.row.charCodeAt(0) - 65;
         var col1 = elem1.col.charCodeAt(0) - 48;
-        console.log(">>>> " + row1 + " " + col1)
+        //console.log(">>>> " + row1 + " " + col1)
         for(var row = 0; row < $scope.rows; row++) {
 
         var theRow =  $scope.data[row];
@@ -88,23 +109,32 @@ app.controller("tetrisCtrl",function($scope, $timeout){
        var counter =  $scope.counter++;
        var pos = $scope.pos;
        var color = $scope.color;
+       var needNewOne = false;
 
        var dataSq = $scope.GetSq(counter, pos, color);
+       var len = dataSq.length;
+       for(var i=0;i < len; i++ ) {
+           var lrow = $filter('filter')($scope.ending, {'col':dataSq[i].col})[0];
+           console.log( dataSq[i].row + "__" +dataSq[i].col + "" + lrow.row);
+           var color2 = $scope.data[dataSq[i].row.charCodeAt(0) - 65 + 1][lrow.col.charCodeAt(0) - 48].color;
+           if(dataSq[i].row.charCodeAt(0) + 1 == lrow.row.charCodeAt(0)) {
+                if(color2 != "default") {
+                needNewOne = true;
+                $scope.updateEnding();
+                break;
+                }
+            } 
+        }
 
-       /*
-       var isEmpty1 = $scope.checkOneElement(dataSq[0]);
-       var isEmpty2 = $scope.checkOneElement(dataSq[1]);
-       var isEmpty3 = $scope.checkOneElement(dataSq[2]);
-       var isEmpty4 = $scope.checkOneElement(dataSq[3]);
-        if(!isEmpty1 | !isEmpty2  | !isEmpty3 | !isEmpty4) {
-            $scope.counter = 65;
+        if(needNewOne) {
+           $scope.counter = 65;
             $scope.pos += 1;
             $scope.color = "orange";
             mytimeout = $timeout($scope.onTimeout,1000);
             return;
-        } 
-         */ 
-        
+
+        }
+       
        if(dataSq[0].row.charCodeAt(0) + 1 >= $scope.lastRow.charCodeAt(0)) {
             // $timeout.cancel(mytimeout);
             $scope.counter = 65;
